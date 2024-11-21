@@ -1,0 +1,1196 @@
+{
+  "teams": [
+    {
+      "name": "Chicago Bears",
+      "picks": [
+        {
+          "pick": 1,
+          "value": 3000
+        },
+        {
+          "pick": 9,
+          "value": 1350
+        },
+        {
+          "pick": 75,
+          "value": 215
+        },
+        {
+          "pick": 122,
+          "value": 50
+        },
+        {
+          "pick": 144,
+          "value": 34
+        }
+      ]
+    },
+    {
+      "name": "Washington Commanders",
+      "picks": [
+        {
+          "pick": 2,
+          "value": 2600
+        },
+        {
+          "pick": 36,
+          "value": 540
+        },
+        {
+          "pick": 50,
+          "value": 400
+        },
+        {
+          "pick": 53,
+          "value": 370
+        },
+        {
+          "pick": 67,
+          "value": 255
+        },
+        {
+          "pick": 100,
+          "value": 100
+        },
+        {
+          "pick": 139,
+          "value": 36.5
+        },
+        {
+          "pick": 161,
+          "value": 27
+        },
+        {
+          "pick": 222,
+          "value": 2.3
+        }
+      ]
+    },
+    {
+      "name": "New England Patriots",
+      "picks": [
+        {
+          "pick": 3,
+          "value": 2200
+        },
+        {
+          "pick": 37,
+          "value": 530
+        },
+        {
+          "pick": 68,
+          "value": 250
+        },
+        {
+          "pick": 103,
+          "value": 88
+        },
+        {
+          "pick": 110,
+          "value": 74
+        },
+        {
+          "pick": 180,
+          "value": 19.4
+        },
+        {
+          "pick": 193,
+          "value": 14.2
+        },
+        {
+          "pick": 231,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Arizona Cardinals",
+      "picks": [
+        {
+          "pick": 4,
+          "value": 1800
+        },
+        {
+          "pick": 27,
+          "value": 680
+        },
+        {
+          "pick": 43,
+          "value": 470
+        },
+        {
+          "pick": 66,
+          "value": 260
+        },
+        {
+          "pick": 71,
+          "value": 235
+        },
+        {
+          "pick": 82,
+          "value": 180
+        },
+        {
+          "pick": 90,
+          "value": 140
+        },
+        {
+          "pick": 104,
+          "value": 86
+        },
+        {
+          "pick": 138,
+          "value": 37
+        },
+        {
+          "pick": 162,
+          "value": 26.6
+        },
+        {
+          "pick": 191,
+          "value": 15
+        },
+        {
+          "pick": 226,
+          "value": 1.4
+        }
+      ]
+    },
+    {
+      "name": "LA Chargers",
+      "picks": [
+        {
+          "pick": 5,
+          "value": 1700
+        },
+        {
+          "pick": 34,
+          "value": 560
+        },
+        {
+          "pick": 69,
+          "value": 245
+        },
+        {
+          "pick": 105,
+          "value": 84
+        },
+        {
+          "pick": 137,
+          "value": 37.5
+        },
+        {
+          "pick": 140,
+          "value": 36
+        },
+        {
+          "pick": 181,
+          "value": 19
+        },
+        {
+          "pick": 225,
+          "value": 1.6
+        },
+        {
+          "pick": 253,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "New York Giants",
+      "picks": [
+        {
+          "pick": 6,
+          "value": 1600
+        },
+        {
+          "pick": 47,
+          "value": 430
+        },
+        {
+          "pick": 70,
+          "value": 240
+        },
+        {
+          "pick": 107,
+          "value": 80
+        },
+        {
+          "pick": 166,
+          "value": 25
+        },
+        {
+          "pick": 183,
+          "value": 18.2
+        }
+      ]
+    },
+    {
+      "name": "Tennessee Titans",
+      "picks": [
+        {
+          "pick": 7,
+          "value": 1500
+        },
+        {
+          "pick": 38,
+          "value": 520
+        },
+        {
+          "pick": 106,
+          "value": 82
+        },
+        {
+          "pick": 146,
+          "value": 33
+        },
+        {
+          "pick": 182,
+          "value": 18.6
+        },
+        {
+          "pick": 242,
+          "value": 1
+        },
+        {
+          "pick": 252,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Atlanta Falcons",
+      "picks": [
+        {
+          "pick": 8,
+          "value": 1400
+        },
+        {
+          "pick": 35,
+          "value": 550
+        },
+        {
+          "pick": 74,
+          "value": 220
+        },
+        {
+          "pick": 109,
+          "value": 76
+        },
+        {
+          "pick": 143,
+          "value": 34.5
+        },
+        {
+          "pick": 186,
+          "value": 17
+        },
+        {
+          "pick": 187,
+          "value": 16.6
+        },
+        {
+          "pick": 197,
+          "value": 12.6
+        }
+      ]
+    },
+    {
+      "name": "New York Jets",
+      "picks": [
+        {
+          "pick": 10,
+          "value": 1300
+        },
+        {
+          "pick": 65,
+          "value": 265
+        },
+        {
+          "pick": 134,
+          "value": 39
+        },
+        {
+          "pick": 171,
+          "value": 23
+        },
+        {
+          "pick": 173,
+          "value": 22.2
+        },
+        {
+          "pick": 176,
+          "value": 21
+        },
+        {
+          "pick": 257,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Minnesota Vikings",
+      "picks": [
+        {
+          "pick": 11,
+          "value": 1250
+        },
+        {
+          "pick": 23,
+          "value": 760
+        },
+        {
+          "pick": 108,
+          "value": 78
+        },
+        {
+          "pick": 177,
+          "value": 20.6
+        },
+        {
+          "pick": 203,
+          "value": 10.2
+        },
+        {
+          "pick": 230,
+          "value": 1
+        },
+        {
+          "pick": 232,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Denver Broncos",
+      "picks": [
+        {
+          "pick": 12,
+          "value": 1200
+        },
+        {
+          "pick": 76,
+          "value": 210
+        },
+        {
+          "pick": 102,
+          "value": 92
+        },
+        {
+          "pick": 145,
+          "value": 33.5
+        },
+        {
+          "pick": 147,
+          "value": 32.6
+        },
+        {
+          "pick": 235,
+          "value": 1
+        },
+        {
+          "pick": 256,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Las Vegas Raiders",
+      "picks": [
+        {
+          "pick": 13,
+          "value": 1150
+        },
+        {
+          "pick": 44,
+          "value": 460
+        },
+        {
+          "pick": 77,
+          "value": 205
+        },
+        {
+          "pick": 112,
+          "value": 70
+        },
+        {
+          "pick": 148,
+          "value": 32.3
+        },
+        {
+          "pick": 208,
+          "value": 8.2
+        },
+        {
+          "pick": 223,
+          "value": 2
+        },
+        {
+          "pick": 229,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "New Orleans Saints",
+      "picks": [
+        {
+          "pick": 14,
+          "value": 1100
+        },
+        {
+          "pick": 41,
+          "value": 490
+        },
+        {
+          "pick": 150,
+          "value": 31.4
+        },
+        {
+          "pick": 170,
+          "value": 23.4
+        },
+        {
+          "pick": 175,
+          "value": 21.4
+        },
+        {
+          "pick": 199,
+          "value": 11.8
+        },
+        {
+          "pick": 239,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Indianapolis Colts",
+      "picks": [
+        {
+          "pick": 15,
+          "value": 1050
+        },
+        {
+          "pick": 52,
+          "value": 380
+        },
+        {
+          "pick": 79,
+          "value": 195
+        },
+        {
+          "pick": 117,
+          "value": 60
+        },
+        {
+          "pick": 142,
+          "value": 35
+        },
+        {
+          "pick": 151,
+          "value": 31
+        },
+        {
+          "pick": 164,
+          "value": 25.8
+        },
+        {
+          "pick": 201,
+          "value": 11
+        },
+        {
+          "pick": 234,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Seattle Seahawks",
+      "picks": [
+        {
+          "pick": 16,
+          "value": 1000
+        },
+        {
+          "pick": 81,
+          "value": 185
+        },
+        {
+          "pick": 118,
+          "value": 58
+        },
+        {
+          "pick": 121,
+          "value": 52
+        },
+        {
+          "pick": 136,
+          "value": 38
+        },
+        {
+          "pick": 179,
+          "value": 19.8
+        },
+        {
+          "pick": 192,
+          "value": 14.6
+        },
+        {
+          "pick": 207,
+          "value": 8.6
+        }
+      ]
+    },
+    {
+      "name": "Jacksonville Jaguars",
+      "picks": [
+        {
+          "pick": 17,
+          "value": 950
+        },
+        {
+          "pick": 48,
+          "value": 420
+        },
+        {
+          "pick": 96,
+          "value": 116
+        },
+        {
+          "pick": 114,
+          "value": 66
+        },
+        {
+          "pick": 116,
+          "value": 62
+        },
+        {
+          "pick": 153,
+          "value": 30.2
+        },
+        {
+          "pick": 167,
+          "value": 24.6
+        },
+        {
+          "pick": 212,
+          "value": 6.6
+        },
+        {
+          "pick": 236,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Cincinnati Bengals",
+      "picks": [
+        {
+          "pick": 18,
+          "value": 900
+        },
+        {
+          "pick": 49,
+          "value": 410
+        },
+        {
+          "pick": 80,
+          "value": 190
+        },
+        {
+          "pick": 97,
+          "value": 112
+        },
+        {
+          "pick": 115,
+          "value": 64
+        },
+        {
+          "pick": 149,
+          "value": 31.8
+        },
+        {
+          "pick": 194,
+          "value": 13.8
+        },
+        {
+          "pick": 214,
+          "value": 5.8
+        },
+        {
+          "pick": 224,
+          "value": 1.8
+        },
+        {
+          "pick": 237,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "LA Rams",
+      "picks": [
+        {
+          "pick": 19,
+          "value": 875
+        },
+        {
+          "pick": 39,
+          "value": 510
+        },
+        {
+          "pick": 83,
+          "value": 175
+        },
+        {
+          "pick": 99,
+          "value": 104
+        },
+        {
+          "pick": 154,
+          "value": 29.8
+        },
+        {
+          "pick": 196,
+          "value": 13
+        },
+        {
+          "pick": 209,
+          "value": 7.8
+        },
+        {
+          "pick": 213,
+          "value": 6.2
+        },
+        {
+          "pick": 217,
+          "value": 4.6
+        },
+        {
+          "pick": 254,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Pittsburgh Steelers",
+      "picks": [
+        {
+          "pick": 20,
+          "value": 850
+        },
+        {
+          "pick": 51,
+          "value": 390
+        },
+        {
+          "pick": 84,
+          "value": 170
+        },
+        {
+          "pick": 98,
+          "value": 108
+        },
+        {
+          "pick": 119,
+          "value": 56
+        },
+        {
+          "pick": 178,
+          "value": 20.2
+        },
+        {
+          "pick": 195,
+          "value": 13.4
+        }
+      ]
+    },
+    {
+      "name": "Miami Dolphins",
+      "picks": [
+        {
+          "pick": 21,
+          "value": 800
+        },
+        {
+          "pick": 55,
+          "value": 350
+        },
+        {
+          "pick": 120,
+          "value": 54
+        },
+        {
+          "pick": 158,
+          "value": 52
+        },
+        {
+          "pick": 184,
+          "value": 17.8
+        },
+        {
+          "pick": 198,
+          "value": 12.2
+        },
+        {
+          "pick": 241,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Philadelphia Eagles",
+      "picks": [
+        {
+          "pick": 22,
+          "value": 780
+        },
+        {
+          "pick": 40,
+          "value": 500
+        },
+        {
+          "pick": 94,
+          "value": 124
+        },
+        {
+          "pick": 127,
+          "value": 45
+        },
+        {
+          "pick": 152,
+          "value": 30.6
+        },
+        {
+          "pick": 155,
+          "value": 29.4
+        },
+        {
+          "pick": 172,
+          "value": 22.6
+        },
+        {
+          "pick": 185,
+          "value": 17.4
+        },
+        {
+          "pick": 190,
+          "value": 15.4
+        }
+      ]
+    },
+    {
+      "name": "Houston Texans",
+      "picks": [
+        {
+          "pick": 42,
+          "value": 480
+        },
+        {
+          "pick": 59,
+          "value": 310
+        },
+        {
+          "pick": 78,
+          "value": 200
+        },
+        {
+          "pick": 123,
+          "value": 49
+        },
+        {
+          "pick": 188,
+          "value": 16.2
+        },
+        {
+          "pick": 205,
+          "value": 9.4
+        },
+        {
+          "pick": 238,
+          "value": 1
+        },
+        {
+          "pick": 247,
+          "value": 1
+        },
+        {
+          "pick": 249,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Dallas Cowboys",
+      "picks": [
+        {
+          "pick": 29,
+          "value": 640
+        },
+        {
+          "pick": 56,
+          "value": 340
+        },
+        {
+          "pick": 73,
+          "value": 225
+        },
+        {
+          "pick": 87,
+          "value": 155
+        },
+        {
+          "pick": 174,
+          "value": 21.8
+        },
+        {
+          "pick": 216,
+          "value": 5
+        },
+        {
+          "pick": 233,
+          "value": 1
+        },
+        {
+          "pick": 244,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Green Bay Packers",
+      "picks": [
+        {
+          "pick": 25,
+          "value": 720
+        },
+        {
+          "pick": 45,
+          "value": 450
+        },
+        {
+          "pick": 58,
+          "value": 320
+        },
+        {
+          "pick": 88,
+          "value": 150
+        },
+        {
+          "pick": 91,
+          "value": 136
+        },
+        {
+          "pick": 111,
+          "value": 72
+        },
+        {
+          "pick": 163,
+          "value": 26.2
+        },
+        {
+          "pick": 169,
+          "value": 23.8
+        },
+        {
+          "pick": 202,
+          "value": 10.6
+        },
+        {
+          "pick": 215,
+          "value": 5.4
+        },
+        {
+          "pick": 245,
+          "value": 1
+        },
+        {
+          "pick": 255,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Tampa Bay Buccanners",
+      "picks": [
+        {
+          "pick": 26,
+          "value": 700
+        },
+        {
+          "pick": 57,
+          "value": 330
+        },
+        {
+          "pick": 89,
+          "value": 145
+        },
+        {
+          "pick": 92,
+          "value": 132
+        },
+        {
+          "pick": 125,
+          "value": 47
+        },
+        {
+          "pick": 220,
+          "value": 3
+        },
+        {
+          "pick": 246,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Buffalo Bills",
+      "picks": [
+        {
+          "pick": 33,
+          "value": 580
+        },
+        {
+          "pick": 60,
+          "value": 300
+        },
+        {
+          "pick": 95,
+          "value": 120
+        },
+        {
+          "pick": 128,
+          "value": 44
+        },
+        {
+          "pick": 141,
+          "value": 35.5
+        },
+        {
+          "pick": 160,
+          "value": 27.4
+        },
+        {
+          "pick": 168,
+          "value": 24.2
+        },
+        {
+          "pick": 204,
+          "value": 9.8
+        },
+        {
+          "pick": 219,
+          "value": 3.8
+        },
+        {
+          "pick": 221,
+          "value": 2.6
+        }
+      ]
+    },
+    {
+      "name": "Detroit Lions",
+      "picks": [
+        {
+          "pick": 24,
+          "value": 740
+        },
+        {
+          "pick": 61,
+          "value": 292
+        },
+        {
+          "pick": 126,
+          "value": 46
+        },
+        {
+          "pick": 132,
+          "value": 40
+        },
+        {
+          "pick": 189,
+          "value": 15.8
+        },
+        {
+          "pick": 210,
+          "value": 7.4
+        }
+      ]
+    },
+    {
+      "name": "Baltimore Ravens",
+      "picks": [
+        {
+          "pick": 30,
+          "value": 620
+        },
+        {
+          "pick": 62,
+          "value": 284
+        },
+        {
+          "pick": 93,
+          "value": 128
+        },
+        {
+          "pick": 113,
+          "value": 68
+        },
+        {
+          "pick": 130,
+          "value": 42
+        },
+        {
+          "pick": 165,
+          "value": 25.4
+        },
+        {
+          "pick": 218,
+          "value": 4.2
+        },
+        {
+          "pick": 228,
+          "value": 1
+        },
+        {
+          "pick": 250,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "San Francisco 49ers",
+      "picks": [
+        {
+          "pick": 31,
+          "value": 600
+        },
+        {
+          "pick": 64,
+          "value": 270
+        },
+        {
+          "pick": 86,
+          "value": 160
+        },
+        {
+          "pick": 124,
+          "value": 48
+        },
+        {
+          "pick": 129,
+          "value": 43
+        },
+        {
+          "pick": 135,
+          "value": 38.5
+        },
+        {
+          "pick": 215,
+          "value": 5.4
+        },
+        {
+          "pick": 251,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Kansas City Chiefs",
+      "picks": [
+        {
+          "pick": 28,
+          "value": 660
+        },
+        {
+          "pick": 63,
+          "value": 276
+        },
+        {
+          "pick": 131,
+          "value": 41
+        },
+        {
+          "pick": 133,
+          "value": 39.5
+        },
+        {
+          "pick": 159,
+          "value": 27.8
+        },
+        {
+          "pick": 211,
+          "value": 7
+        },
+        {
+          "pick": 248,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Carolina Panthers",
+      "picks": [
+        {
+          "pick": 32,
+          "value": 590
+        },
+        {
+          "pick": 46,
+          "value": 440
+        },
+        {
+          "pick": 72,
+          "value": 230
+        },
+        {
+          "pick": 101,
+          "value": 96
+        },
+        {
+          "pick": 157,
+          "value": 28.6
+        },
+        {
+          "pick": 200,
+          "value": 11.4
+        },
+        {
+          "pick": 240,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Cleveland Browns",
+      "picks": [
+        {
+          "pick": 54,
+          "value": 360
+        },
+        {
+          "pick": 85,
+          "value": 165
+        },
+        {
+          "pick": 156,
+          "value": 29
+        },
+        {
+          "pick": 206,
+          "value": 9
+        },
+        {
+          "pick": 227,
+          "value": 1.2
+        },
+        {
+          "pick": 243,
+          "value": 1
+        }
+      ]
+    }
+  ]
+}
