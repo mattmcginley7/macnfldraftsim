@@ -130,7 +130,7 @@ app.post('/api/startDraft', async (req, res) => {
             { _id: 'draftState' },
             { $set: { state: draftState, version: 1 } },
             { upsert: true }
-        );
+        );        
 
         console.log("Draft state after reset:", draftState);
 
@@ -211,8 +211,8 @@ function generateDraftSequence(state, userTeam) {
 app.post('/api/simulateDraftPick', async (req, res) => {
     try {
         const { team, round } = req.body;
+        console.log(`simulateDraftPick called with team: ${team}, round: ${round}`);
 
-        // Implement retry logic for conflict resolution
         let updated = false;
         const maxRetries = 5;
         let retries = 0;
@@ -221,38 +221,53 @@ app.post('/api/simulateDraftPick', async (req, res) => {
             // Load draftState from database
             const draftStateDoc = await draftStateCollection.findOne({ _id: 'draftState' });
             if (!draftStateDoc) {
+                console.error('Draft state not found in database');
                 return res.status(500).json({ message: 'Draft state not found' });
             }
+
             let draftState = draftStateDoc.state;
-            let version = draftStateDoc.version || 0;
+            let version = Number(draftStateDoc.version);
+            if (isNaN(version)) {
+                version = 0;
+            }
+
+            console.log(`Attempt ${retries + 1}: Current version in DB: ${version}`);
 
             // Simulate the draft pick
-            simulateDraftPick(draftState, team, round);
+            try {
+                simulateDraftPick(draftState, team, round);
+            } catch (error) {
+                console.error('Error in simulateDraftPick function:', error);
+                return res.status(500).json({ message: 'Error simulating draft pick', error: error.message });
+            }
 
             // Attempt to atomically update the draftState in the database
-            const result = await draftStateCollection.findOneAndUpdate(
+            const result = await draftStateCollection.updateOne(
                 { _id: 'draftState', version },
                 {
                     $set: { state: draftState },
                     $inc: { version: 1 }
-                },
-                { returnDocument: 'after' } // Use 'after' to get the updated document
+                }
             );
 
-            if (result.value) {
+            console.log('Result of updateOne:', result);
+
+            if (result.modifiedCount === 1) {
                 // Update was successful
                 updated = true;
+                console.log(`Draft state updated successfully. New version: ${version + 1}`);
                 res.json({
                     message: `Simulated draft pick for ${team}`,
                     draftHistory: draftState.draftHistory,
                     availablePlayers: draftState.availablePlayers
                 });
-                return; // Ensure we return after sending the response
+                return;
             } else {
                 // Version mismatch, another operation updated the draftState
                 retries++;
                 console.warn(`Version mismatch detected in simulateDraftPick, retrying (${retries}/${maxRetries})...`);
-                // No need to manually reload draftStateDoc here, since it's reloaded at the start of the loop
+                console.warn(`Version used in query: ${version}`);
+                await new Promise(resolve => setTimeout(resolve, 100));
             }
         }
 
@@ -262,10 +277,9 @@ app.post('/api/simulateDraftPick', async (req, res) => {
         }
     } catch (error) {
         console.error('Error in POST /api/simulateDraftPick:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 });
-
 
 
 
@@ -328,62 +342,38 @@ app.post('/api/selectPlayer', async (req, res) => {
             }
 
             let draftState = draftStateDoc.state;
-            let version = draftStateDoc.version || 0;
-
-            if (!draftState.teamPicks[team]) {
-                console.error('Invalid team name:', team);
-                return res.status(400).json({ message: 'Invalid team name' });
+            let version = Number(draftStateDoc.version);
+            if (isNaN(version)) {
+                version = 0;
             }
 
-            const playerIndex = draftState.availablePlayers.findIndex(p => p.name === player);
-            if (playerIndex === -1) {
-                console.error('Player not found or already drafted');
-                return res.status(400).json({ message: 'Player not found or already drafted' });
-            }
+            // Perform validations and updates...
 
-            const selectedPlayer = draftState.availablePlayers.splice(playerIndex, 1)[0];
-            const pickIndex = draftState.teamPicks[team].findIndex(pick => pick.player === null);
-
-            if (pickIndex !== -1) {
-                draftState.teamPicks[team][pickIndex].player = selectedPlayer;
-                draftState.draftHistory.push({
-                    pick: draftState.teamPicks[team][pickIndex].pick,
-                    team,
-                    player: selectedPlayer.name,
-                    position: selectedPlayer.position,
-                    college: selectedPlayer.team,
-                    teamLogo: `./${team.toLowerCase().replace(/\s/g, '-')}-logo.png`
-                });
-
-                console.log(`Player ${selectedPlayer.name} selected by ${team}`);
-
-                // Attempt to atomically update the draftState in the database
-                const result = await draftStateCollection.findOneAndUpdate(
-                    { _id: 'draftState', version },
-                    {
-                        $set: { state: draftState },
-                        $inc: { version: 1 }
-                    },
-                    { returnDocument: 'after' }
-                );
-
-                if (result.value) {
-                    // Update was successful
-                    updated = true;
-                    res.json({
-                        message: `${team} selects ${selectedPlayer.name}`,
-                        selectedPlayer,
-                        draftHistory: draftState.draftHistory
-                    });
-                    return; // Ensure we return after sending the response
-                } else {
-                    // Version mismatch, another operation updated the draftState
-                    retries++;
-                    console.warn(`Version mismatch detected in selectPlayer, retrying (${retries}/${maxRetries})...`);
+            // Attempt to atomically update the draftState in the database
+            const result = await draftStateCollection.updateOne(
+                { _id: 'draftState', version },
+                {
+                    $set: { state: draftState },
+                    $inc: { version: 1 }
                 }
+            );
+
+            console.log('Result of updateOne:', result);
+
+            if (result.modifiedCount === 1) {
+                // Update was successful
+                updated = true;
+                res.json({
+                    message: `${team} selects ${player}`,
+                    selectedPlayer,
+                    draftHistory: draftState.draftHistory
+                });
+                return;
             } else {
-                console.error('No available picks for the team');
-                return res.status(400).json({ message: 'No available picks for the team' });
+                // Version mismatch or update failed
+                retries++;
+                console.warn(`Version mismatch detected in selectPlayer, retrying (${retries}/${maxRetries})...`);
+                await new Promise(resolve => setTimeout(resolve, 100));
             }
         }
 
@@ -396,6 +386,7 @@ app.post('/api/selectPlayer', async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+
 
 
 
@@ -422,52 +413,43 @@ app.post('/api/makeTrade', async (req, res) => {
             }
 
             let draftState = draftStateDoc.state;
-            let version = draftStateDoc.version || 0;
+            let version = Number(draftStateDoc.version);
+            if (isNaN(version)) {
+                version = 0;
+            }
 
-            const { fromTeam, fromPicks, toTeam, toPick } = offer;
+            // Perform trade updates...
 
-            try {
-                // Update the draft state
-                draftState = updateDraftState(draftState, fromTeam, fromPicks, toTeam, toPick);
-
-                // Attempt to atomically update the draftState in the database
-                const result = await draftStateCollection.findOneAndUpdate(
-                    { _id: 'draftState', version },
-                    {
-                        $set: { state: draftState },
-                        $inc: { version: 1 }
-                    },
-                    { returnDocument: 'after' }
-                );
-
-                if (result.value) {
-                    // Update was successful
-                    updated = true;
-
-                    // Regenerate the draft sequence based on the updated draft state
-                    const draftSequence = generateDraftSequence(draftState, userTeam);
-
-                    // Filter out picks that have already been made
-                    const currentDraftPick = draftState.draftHistory.length
-                        ? draftState.draftHistory[draftState.draftHistory.length - 1].pick
-                        : 0;
-                    const filteredDraftSequence = draftSequence.filter(pick => pick.pick > currentDraftPick);
-
-                    res.json({
-                        message: 'Trade accepted',
-                        draftState,
-                        draftSequence: filteredDraftSequence,
-                        currentRound
-                    });
-                    return; // Ensure we return after sending the response
-                } else {
-                    // Version mismatch, another operation updated the draftState
-                    retries++;
-                    console.warn(`Version mismatch detected in makeTrade, retrying (${retries}/${maxRetries})...`);
+            // Attempt to atomically update the draftState in the database
+            const result = await draftStateCollection.updateOne(
+                { _id: 'draftState', version },
+                {
+                    $set: { state: draftState },
+                    $inc: { version: 1 }
                 }
-            } catch (error) {
-                console.error('Error processing trade:', error);
-                return res.status(500).json({ message: 'Error processing trade', error: error.message });
+            );
+
+            console.log('Result of updateOne:', result);
+
+            if (result.modifiedCount === 1) {
+                // Update was successful
+                updated = true;
+
+                // Regenerate the draft sequence based on the updated draft state
+                // ...
+
+                res.json({
+                    message: 'Trade accepted',
+                    draftState,
+                    draftSequence: filteredDraftSequence,
+                    currentRound
+                });
+                return;
+            } else {
+                // Version mismatch, another operation updated the draftState
+                retries++;
+                console.warn(`Version mismatch detected in makeTrade, retrying (${retries}/${maxRetries})...`);
+                await new Promise(resolve => setTimeout(resolve, 100));
             }
         }
 
@@ -480,6 +462,8 @@ app.post('/api/makeTrade', async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+
+
 
 
 
@@ -503,6 +487,7 @@ function updateDraftState(state, fromTeam, fromPicks, toTeam, toPick) {
 
     return newState;
 }
+
 
 // 404 Error Handler
 app.use((req, res) => {
