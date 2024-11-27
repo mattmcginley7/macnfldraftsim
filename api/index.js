@@ -6,7 +6,6 @@ const path = require('path');
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -20,7 +19,6 @@ const teamsFilePath = path.join(__dirname, 'teams.json');
 const uri = process.env.MONGODB_URI; // Ensure this is set in your environment variables
 const client = new MongoClient(uri);
 
-
 let draftStateCollection;
 
 async function connectToDB() {
@@ -29,6 +27,11 @@ async function connectToDB() {
         const database = client.db('draft_db'); // Use your database name
         draftStateCollection = database.collection('draft_state');
         console.log('Connected to MongoDB database');
+
+        // Start the server after the database connection is established
+        app.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
+        });
     } catch (error) {
         console.error('Error connecting to database:', error);
     }
@@ -324,6 +327,7 @@ function getRandomPlayerWithBias(availablePlayers, round) {
 }
 
 // Endpoint to select a player
+// Endpoint to select a player
 app.post('/api/selectPlayer', async (req, res) => {
     try {
         const { player, team } = req.body;
@@ -347,7 +351,33 @@ app.post('/api/selectPlayer', async (req, res) => {
                 version = 0;
             }
 
-            // Perform validations and updates...
+            // Find the player in availablePlayers
+            const playerIndex = draftState.availablePlayers.findIndex(p => p.name === player);
+            if (playerIndex === -1) {
+                return res.status(400).json({ message: 'Player not available' });
+            }
+
+            const selectedPlayer = draftState.availablePlayers.splice(playerIndex, 1)[0];
+
+            // Find the next available pick for the team
+            const pickIndex = draftState.teamPicks[team].findIndex(pick => pick.player === null);
+
+            if (pickIndex !== -1) {
+                draftState.teamPicks[team][pickIndex].player = selectedPlayer;
+
+                draftState.draftHistory.push({
+                    pick: draftState.teamPicks[team][pickIndex].pick,
+                    team,
+                    player: selectedPlayer.name,
+                    position: selectedPlayer.position,
+                    college: selectedPlayer.team,
+                    teamLogo: `./${team.toLowerCase().replace(/\s/g, '-')}-logo.png`
+                });
+
+                console.log(`${team} selects ${selectedPlayer.name}`);
+            } else {
+                return res.status(400).json({ message: 'No available pick for the team' });
+            }
 
             // Attempt to atomically update the draftState in the database
             const result = await draftStateCollection.updateOne(
@@ -390,6 +420,8 @@ app.post('/api/selectPlayer', async (req, res) => {
 
 
 
+
+// Endpoint to make a trade
 // Endpoint to make a trade
 app.post('/api/makeTrade', async (req, res) => {
     try {
@@ -419,6 +451,8 @@ app.post('/api/makeTrade', async (req, res) => {
             }
 
             // Perform trade updates...
+            const { fromTeam, fromPicks, toTeam, toPick } = offer;
+            draftState = updateDraftState(draftState, fromTeam, fromPicks, toTeam, toPick);
 
             // Attempt to atomically update the draftState in the database
             const result = await draftStateCollection.updateOne(
@@ -436,7 +470,11 @@ app.post('/api/makeTrade', async (req, res) => {
                 updated = true;
 
                 // Regenerate the draft sequence based on the updated draft state
-                // ...
+                const draftSequence = generateDraftSequence(draftState, userTeam);
+
+                // Filter the draft sequence to remove picks that have already been made
+                const picksMade = draftState.draftHistory.map(pick => pick.pick);
+                const filteredDraftSequence = draftSequence.filter(pick => !picksMade.includes(pick.pick));
 
                 res.json({
                     message: 'Trade accepted',
@@ -462,6 +500,7 @@ app.post('/api/makeTrade', async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+
 
 
 
@@ -499,7 +538,5 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ message: 'Internal Server Error' });
 });
-
-app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
 
 
